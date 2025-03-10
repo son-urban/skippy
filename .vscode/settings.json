@@ -1,22 +1,12 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "editor.wordWrap": "off",
+  "editor.wordWrap": "on",
   "editor.rulers": [
-    80
+    
   ],
 
 
   "files.insertFinalNewline": true,
-
-  "ruby.lint": {
-    "rubocop": true
-  },
-
-  "[markdown]": {
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 80
-  },
-
   "todohighlight.keywordsPattern": "(TODO|FIXME|KLUDGE)(\\([^)]+\\))?:",
   "todohighlight.include": [
     "**/*.rb",
@@ -40,5 +30,21 @@
     "pkg/**",
     "tmp/**",
     "vendor/**",
-  ]
+  ],
+  "ruby.format": "rubocop",
+  "[ruby]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": null,
+    "editor.formatOnType": false
+  },
+  // Enable all hints
+  "rubyLsp.featuresConfiguration.inlayHint.enableAll": true,
+  // Enable implicit rescue (defaults to true)
+  "rubyLsp.featuresConfiguration.inlayHint.implicitRescue": true,
+  // Enable implicit hash values (omitted hash values)
+  "rubyLsp.featuresConfiguration.inlayHint.implicitHashValue": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.formatOnType": false
 }
