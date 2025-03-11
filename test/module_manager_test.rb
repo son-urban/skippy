@@ -25,7 +25,6 @@ class SkippyModuleManagerTest < Skippy::Test::Fixture
     assert_file(project.path('src/hello_world/vendor/my-lib/gl.rb'))
     assert_file(project.path('src/hello_world/vendor/my-lib/gl/container.rb'))
     assert_file(project.path('src/hello_world/vendor/my-lib/gl/control.rb'))
-    assert_equal(0, 1)
   end
 
   def test_that_it_can_remove_a_module

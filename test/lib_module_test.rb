@@ -3,6 +3,8 @@
 require 'test_helper'
 require 'skippy/lib_module'
 require 'skippy/project'
+require 'C:\Users\FrontA\skippy\src\Entity2'
+require 'mocha/minitest'
 
 class SkippyLibModuleTest < Skippy::Test::Fixture
 
@@ -12,6 +14,9 @@ class SkippyLibModuleTest < Skippy::Test::Fixture
     super
     use_fixture('project_with_lib')
     @project = Skippy::Project.new(work_path)
+
+    @mock_land_use = mock('land_use')
+    @entity = UrbanA::Entity.new(@mock_land_use)
   end
 
   def test_that_it_can_load_module_info

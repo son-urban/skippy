@@ -1,49 +1,22 @@
 # frozen_string_literal: true
 
-require 'test_helper'
-require 'skippy/app'
-require 'pathname'
+# require 'mocha/minitest'
+require 'C:\Users\FrontA\skippy\src\Entity2'
 
-class SkippyAppTest < Minitest::Test
+class EntityTest
 
-  include SkippyTestHelper
+  def setup
+    p 'HERE2'
 
-  def test_that_it_boots_the_app_commands
-    # Cannot assert there are not loaded commands because the other
-    # tests might have booted the app.
-    # assert_equal(0, loaded_commands.size, loaded_commands)
-    Skippy::App.boot(boot_loader_path)
-    refute_equal(0, loaded_commands.size, loaded_commands)
+    # @mock_land_use = mock('land_use')
+    # @entity = UrbanA::Entity.new(@mock_land_use)
   end
 
-  def test_that_it_finds_the_app_templates
-    app = Skippy::App.boot(boot_loader_path)
-    refute_equal(0, app.templates.size)
-    app.templates.each { |template|
-      assert_kind_of(Pathname, template)
-      assert_predicate(template, :directory?, "Template not found: #{template}")
-    }
+  def test_initialization
+    # Test that entity initializes with correct attributes
+    assert_equal(@mock_land_use, @entity.land_use, 'Land use should be set correctly')
+    assert_nil(@entity.superior, 'Superior should be nil by default')
+    assert_kind_of(Hash, @entity.ucvs, 'UCVs should be a hash')
+    assert_kind_of(Hash, @entity.params, 'Params should be a hash')
   end
-
-  def test_that_it_returns_a_valid_templates_path
-    app = Skippy::App.boot(boot_loader_path)
-    path = app.templates_source_path
-    assert_kind_of(Pathname, path)
-    assert_predicate(path, :directory?, path)
-  end
-
-  def test_that_it_returns_a_valid_resources_path
-    app = Skippy::App.boot(boot_loader_path)
-    path = app.resources
-    assert_kind_of(Pathname, path)
-    assert_predicate(path, :directory?, path)
-  end
-
-  def test_that_it_returns_a_valid_resources_sub_path
-    app = Skippy::App.boot(boot_loader_path)
-    path = app.resources('commands')
-    assert_kind_of(Pathname, path)
-    assert_predicate(path, :directory?, path)
-  end
-
 end
